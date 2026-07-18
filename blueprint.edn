@@ -1,0 +1,11 @@
+[{:itonami.blueprint/social-impact [:worker-safety :delivery-reliability :logistics-continuity]
+  :itonami.blueprint/domain :delivery-logistics/messenger-package-delivery-luggage-porterage-route-scheduling-logistics-coordination
+  :itonami.blueprint/required-technologies [:robotics :identity :audit-ledger]
+  :itonami.blueprint/isco-08 "9621"
+  :itonami.blueprint/name "Messenger, Package Delivery and Luggage Porterage Route Scheduling and Logistics Coordination Practice"
+  :itonami.blueprint/governor :courier-route-governor
+  :itonami.blueprint/robotics true
+  :db/id -1
+  :itonami.blueprint/status :public-oss
+  :itonami.blueprint/id "cloud-itonami-isco-9621"
+  :itonami.blueprint/license "AGPL-3.0-or-later"}]
