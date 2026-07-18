@@ -18,8 +18,8 @@ Porter Advisor` (`courier.advisor`) and an independent
 `CourierRouteGovernor` (`courier.governor`), following the itonami
 actor pattern (ADR-2607121000): `:intake -> :advise -> :govern ->
 :decide -+-> :commit (:ok?) +-> :request-approval (:escalate?,
-human-in-the-loop interrupt) +-> :hold (:hard?)`. TEST_COUNT tests /
-ASSERTION_COUNT assertions green (`clojure -M:test`). HARD invariants
+human-in-the-loop interrupt) +-> :hold (:hard?)`. 24 tests / 52
+assertions green (`clojure -M:test`). HARD invariants
 (always hold, never overridable): worker provenance, route provenance,
 no-actuation (`:effect` must be `:propose`), a closed op-allowlist
 (`:log-work-record`, `:schedule-crew-operation`,
