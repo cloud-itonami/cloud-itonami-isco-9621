@@ -1,0 +1,36 @@
+;; What this vertical's robot physically does, declared for
+;; kotoba.robotics.process (kotoba-lang/robotics). `kbb -M:physics` runs it.
+;;
+;; README "Robotics premise": a route scheduling/logistics coordination robot
+;; performs crew scheduling, delivery logging and delivery-equipment
+;; procurement coordination for a messenger/package-deliverer/luggage-porter
+;; crew (ISCO 9621). It never delivers itself. The delivery equipment's
+;; physical work it schedules: a sidewalk delivery robot climbing the grades
+;; on its leg, and the manual-lifting load of putting a parcel into the upper
+;; compartment of a parcel locker.
+;;
+;; Every number without a cited source is marked `estimate` in its :basis.
+;; Replacing an estimate with a sourced value is this bot's growth work.
+{:physics/schema "itonami.physical-ai.spec.v1"
+ :repo "cloud-itonami/cloud-itonami-isco-9621"
+ :cases
+ [{:id :sidewalk-robot-up-grade
+   :kind :transport
+   :procedure "sidewalk delivery robot (50 kg) carries 20 kg of parcels 80 m along a sidewalk; grade varied"
+   :params {:mass-kg 50.0 :payload-kg 20.0 :distance-m 80.0 :v-max-mps 1.6 :a-max-mps2 0.5
+            :brake-decel-mps2 1.0 :drive-force-n 120.0 :crr 0.015
+            :cog-height-m 0.35 :support-half-length-m 0.30 :payload-cog-height-m 0.45
+            :max-time-s 1200.0}
+   :sweep {:param :slope-deg :values [0.0 3.0 6.0 8.0 10.0 12.0]}
+   :quantity :cycle-time-s
+   :limit {:max 70.0 :basis "estimate: block-level pace needed for the promised delivery window"}
+   :boundary {:lo 0.0 :hi 15.0}}
+  {:id :parcel-into-upper-locker
+   :kind :manipulator
+   :procedure "arm lifts a parcel from the delivery robot's bay into an upper parcel-locker compartment"
+   :params {:l1-m 0.50 :l2-m 0.45 :m1-kg 5.0 :m2-kg 3.5
+            :from [0.55 0.00] :to [0.35 0.85] :duration-s 2.0 :steps 400}
+   :sweep {:param :payload-kg :values [1.0 3.0 5.0 10.0 15.0]}
+   :quantity :peak-tau1-nm
+   :limit {:max 100.0 :basis "estimate: continuous shoulder torque of a ~8 kg-payload collaborative arm"}
+   :boundary {:lo 0.5 :hi 30.0}}]}
