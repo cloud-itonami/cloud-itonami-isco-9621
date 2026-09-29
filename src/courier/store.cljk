@@ -1,7 +1,7 @@
 (ns courier.store
   "SSoT for the ISCO-08 9621 messenger/package-delivery/luggage-portering
   route scheduling/logistics coordination actor (itonami actor pattern,
-  ADR-2607121000 / CLAUDE.md Actors section; README's 'Robotics
+  ADR-2607121000 / AGENTS.md Actors section; README's 'Robotics
   premise' — a route scheduling/logistics coordination robot performs
   crew scheduling, delivery-log/progress-record logging and
   delivery-equipment/consumables procurement coordination for a
